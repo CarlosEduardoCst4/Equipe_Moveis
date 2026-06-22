@@ -1,0 +1,92 @@
+/* Cor de fundo geral das páginas */
+body {
+  background-color: #0d1f3c;
+  color: #e6f1fb;
+}
+
+/* Navbar — cor dark azul */
+nav,
+nav .nav-wrapper {
+  background-color: #071020;
+  border-bottom: 1px solid #0c447c;
+}
+
+/* Links do menu */
+nav .nav-wrapper a {
+  color: #85b7eb;
+}
+
+nav .nav-wrapper a:hover {
+  color: #e6f1fb;
+}
+
+/* Cards */
+.card {
+  background-color: #071020;
+  border: 0.5px solid #0c447c;
+  color: #e6f1fb;
+}
+
+.card .card-content {
+  color: #b5d4f4;
+}
+
+/* Inputs — texto e label */
+input,
+textarea,
+select {
+  color: #e6f1fb !important;
+}
+
+label {
+  color: #85b7eb !important;
+}
+
+/* Linha embaixo dos inputs do Materialize */
+.input-field input:focus + label {
+  color: #378add !important;
+}
+
+.input-field input:focus {
+  border-bottom: 1px solid #378add !important;
+  box-shadow: 0 1px 0 0 #378add !important;
+}
+
+/* Botão padrão */
+.btn,
+.btn-large {
+  background-color: #185fa5;
+}
+
+.btn:hover,
+.btn-large:hover {
+  background-color: #378add;
+}
+
+/* Tabelas */
+table {
+  background-color: #071020;
+}
+
+thead {
+  background-color: #0c447c;
+  color: #e6f1fb;
+}
+
+tbody tr {
+  border-bottom: 0.5px solid #0c447c;
+  color: #b5d4f4;
+}
+
+tbody tr:hover {
+  background-color: #0d1f3c;
+}
+
+/* Sidenav mobile */
+.sidenav {
+  background-color: #071020;
+}
+
+.sidenav a {
+  color: #85b7eb !important;
+}
