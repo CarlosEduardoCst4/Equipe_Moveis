@@ -25,7 +25,6 @@
     <link rel="icon" href="/equipe-moveis/images/logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Todo o CSS agora vem do arquivo externo -->
     <link rel="stylesheet" href="/equipe-moveis/VIEW/css/style.css">
 </head>
 <body>

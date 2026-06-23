@@ -6,7 +6,6 @@
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/conexao.php";
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/MODEL/produto.php";
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/produto.php";
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/categoria.php";
 
     $dalProduto = new \DAL\Produto();
     $produtos   = $dalProduto->SelectAll();
@@ -17,7 +16,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Produtos — Equipe Móveis</title>
-    <link rel="icon" href="/equipe-moveis/images/logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="/equipe-moveis/VIEW/css/style.css">
@@ -33,9 +31,6 @@
             <div class="col s6 right-align">
                 <a href="frmInsProduto.php" class="btn waves-effect waves-light">
                     <i class="material-icons left">add</i>Novo Produto
-                </a>
-                <a href="/equipe-moveis/VIEW/CATEGORIA/lstCategoria.php" class="btn waves-effect waves-light">
-                <i class="material-icons left">local_offer</i>Categorias
                 </a>
             </div>
         </div>
@@ -54,7 +49,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($produtos as $p) { ?>
+                <?php foreach ($produtos as $p): ?>
                 <tr>
                     <td><?php echo $p->descricao; ?></td>
                     <td><?php echo $p->nome_categoria; ?></td>
@@ -62,29 +57,32 @@
                     <td>R$ <?php echo number_format($p->preco_custo, 2, ',', '.'); ?></td>
                     <td>R$ <?php echo number_format($p->preco_venda, 2, ',', '.'); ?></td>
                     <td>
-                        <?php
-                            // Alerta visual se estoque estiver abaixo do mínimo
-                            if ($p->estoque_atual <= $p->estoque_minimo) {
-                                echo '<span style="color:#F09595">' . $p->estoque_atual . ' ⚠</span>';
-                            } else {
-                                echo $p->estoque_atual;
-                            }
-                        ?>
+                        <?php if ($p->estoque_atual <= $p->estoque_minimo): ?>
+                            <span style="color:#F09595"><?php echo $p->estoque_atual; ?> ⚠</span>
+                        <?php else: ?>
+                            <?php echo $p->estoque_atual; ?>
+                        <?php endif; ?>
                     </td>
                     <td><?php echo $p->estoque_minimo; ?></td>
                     <td>
-                        <a href="frmEdtProduto.php?id=<?php echo $p->id; ?>"
-                           class="btn-small waves-effect waves-light">
-                            <i class="material-icons">edit</i>
-                        </a>
-                        <a href="opRemProduto.php?id=<?php echo $p->id; ?>"
-                           class="btn-small red waves-effect waves-light"
-                           onclick="return confirm('Deseja desativar este produto?')">
-                            <i class="material-icons">delete</i>
-                        </a>
+                        <!-- Editar -->
+                        <form action="frmEdtProduto.php" method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<?php echo $p->id; ?>">
+                            <button type="submit" class="btn-small waves-effect waves-light">
+                                <i class="material-icons">edit</i>
+                            </button>
+                        </form>
+                        <!-- Excluir -->
+                        <form action="opRemProduto.php" method="POST" style="display:inline;"
+                              onsubmit="return confirm('Deseja desativar este produto?')">
+                            <input type="hidden" name="id" value="<?php echo $p->id; ?>">
+                            <button type="submit" class="btn-small red waves-effect waves-light">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
-                <?php } ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

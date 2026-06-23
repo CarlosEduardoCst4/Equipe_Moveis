@@ -16,7 +16,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Usuários — Equipe Móveis</title>
-    <link rel="icon" href="/equipe-moveis/images/logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="/equipe-moveis/VIEW/css/style.css">
@@ -45,28 +44,36 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($usuarios as $u) { ?>
+                <?php foreach ($usuarios as $u): ?>
                 <tr>
                     <td><?php echo $u->getNome(); ?></td>
                     <td><?php echo $u->getLogin(); ?></td>
                     <td>
-                        <a href="frmEdtUsuario.php?id=<?php echo $u->getId(); ?>"
-                           class="btn-small waves-effect waves-light">
-                            <i class="material-icons">edit</i>
-                        </a>
-                        <!-- Botão ver itens da composição -->
-                        <a href="detUsuario.php?id=<?php echo $u->getID(); ?>"
-                           class="btn-small waves-effect waves-light blue darken-2">
-                            <i class="material-icons">visibility</i>
-                        </a>
-                        <a href="opRemUsuario.php?id=<?php echo $u->getId(); ?>"
-                           class="btn-small red waves-effect waves-light"
-                           onclick="return confirm('Deseja excluir este usuário?')">
-                            <i class="material-icons">delete</i>
-                        </a>
+                        <!-- Detalhes -->
+                        <form action="detUsuario.php" method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<?php echo $u->getId(); ?>">
+                            <button type="submit" class="btn-small waves-effect waves-light blue darken-2">
+                                <i class="material-icons">visibility</i>
+                            </button>
+                        </form>
+                        <!-- Editar -->
+                        <form action="frmEdtUsuario.php" method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<?php echo $u->getId(); ?>">
+                            <button type="submit" class="btn-small waves-effect waves-light">
+                                <i class="material-icons">edit</i>
+                            </button>
+                        </form>
+                        <!-- Excluir -->
+                        <form action="opRemUsuario.php" method="POST" style="display:inline;"
+                              onsubmit="return confirm('Deseja excluir este usuário?')">
+                            <input type="hidden" name="id" value="<?php echo $u->getId(); ?>">
+                            <button type="submit" class="btn-small red waves-effect waves-light">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
-                <?php } ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

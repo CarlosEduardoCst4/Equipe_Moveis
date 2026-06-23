@@ -7,8 +7,7 @@
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/MODEL/usuario.php";
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/usuario.php";
 
-    $id = $_GET['id'];
-
+    $id = $_POST['id'];
     $dalUsuario = new \DAL\Usuario();
     $dalUsuario->Delete($id);
 

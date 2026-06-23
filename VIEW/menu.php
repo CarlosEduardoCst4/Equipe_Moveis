@@ -12,15 +12,15 @@
             <img src="/equipe-moveis/images/Whats_logo.jpeg" alt="Logo" style="margin: 15px 0 0 15px; max-width: 120px;">
         </a>
 
-        <!-- Ícone do menu hamburguer — aparece só no celular -->
+        <!-- Ícone do menu hamburguer -->
         <a href="#" data-target="menu-mobile" class="sidenav-trigger right">
             <i class="material-icons">menu</i>
         </a>
 
-        <!-- Links do menu — ficam visíveis no desktop (hide-on-med-and-down oculta no celular) -->
+        <!-- Links do menu — ficam visíveis no desktop -->
         <ul class="right hide-on-med-and-down">
 
-            <!-- Cada <li> é um item do menu -->
+            <!-- Cada <li> é um item do menu Materialize -->
             <li><a href="/equipe-moveis/VIEW/PRODUTO/lstProduto.php">
                 <i class="material-icons left">inventory_2</i>Produtos
             </a></li>

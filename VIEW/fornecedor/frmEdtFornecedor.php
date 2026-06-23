@@ -7,8 +7,7 @@
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/MODEL/fornecedor.php";
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/fornecedor.php";
 
-    // Captura o ID enviado via GET pela listagem (ex: ?id=3)
-    $id = $_GET['id'];
+    $id = $_POST['id'];
 
     // Busca os dados atuais do fornecedor pelo ID para pré-preencher o formulário
     $dalFornecedor = new \DAL\Fornecedor();

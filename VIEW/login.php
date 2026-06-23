@@ -1,6 +1,5 @@
 <?php
 // Inclui primeiro a conexão, depois o model, depois a DAL
-// Essa ordem evita o erro "class already in use"
 include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/conexao.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/MODEL/usuario.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/usuario.php";
@@ -9,7 +8,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/usuario.php";
 $login = $_POST['login'];
 $pwd   = $_POST['pwd'];
 
-// Converte a senha para MD5 — mesmo formato salvo no banco
+// Converte a senha para MD5
 $md5 = md5($pwd);
 
 // Se login ou senha estiverem vazios, volta para a tela de login
@@ -28,7 +27,7 @@ if ($md5 == $usuario->getSenha()) {
     // Redireciona para o dashboard
     header("location: dashboard.php");
 } else {
-    // Senha incorreta — volta para a tela de login
+    // volta para a tela de login
     header("location: index.php");
 }
 ?>

@@ -16,7 +16,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Móveis — Equipe Móveis</title>
-    <link rel="icon" href="/equipe-moveis/images/logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="/equipe-moveis/VIEW/css/style.css">
@@ -47,30 +46,38 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($moveis as $m) { ?>
+                <?php foreach ($moveis as $m): ?>
                 <tr>
                     <td><?php echo $m->descricao; ?></td>
                     <td><?php echo $m->nome_categoria; ?></td>
                     <td>R$ <?php echo number_format($m->preco_venda, 2, ',', '.'); ?></td>
                     <td><?php echo date('d/m/Y', strtotime($m->data_cadastro)); ?></td>
                     <td>
-                        <a href="frmEdtMovel.php?id=<?php echo $m->id; ?>"
-                           class="btn-small waves-effect waves-light">
-                            <i class="material-icons">edit</i>
-                        </a>
-                        <!-- Botão ver itens da composição -->
-                        <a href="detMovel.php?id=<?php echo $m->id; ?>"
-                           class="btn-small waves-effect waves-light blue darken-2">
-                            <i class="material-icons">visibility</i>
-                        </a>
-                        <a href="opRemMovel.php?id=<?php echo $m->id; ?>"
-                           class="btn-small red waves-effect waves-light"
-                           onclick="return confirm('Deseja excluir este móvel?')">
-                            <i class="material-icons">delete</i>
-                        </a>
+                        <!-- Ver detalhes -->
+                        <form action="detMovel.php" method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<?php echo $m->id; ?>">
+                            <button type="submit" class="btn-small waves-effect waves-light blue darken-2">
+                                <i class="material-icons">visibility</i>
+                            </button>
+                        </form>
+                        <!-- Editar -->
+                        <form action="frmEdtMovel.php" method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<?php echo $m->id; ?>">
+                            <button type="submit" class="btn-small waves-effect waves-light">
+                                <i class="material-icons">edit</i>
+                            </button>
+                        </form>
+                        <!-- Excluir -->
+                        <form action="opRemMovel.php" method="POST" style="display:inline;"
+                              onsubmit="return confirm('Deseja excluir este móvel?')">
+                            <input type="hidden" name="id" value="<?php echo $m->id; ?>">
+                            <button type="submit" class="btn-small red waves-effect waves-light">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
-                <?php } ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

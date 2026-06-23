@@ -11,7 +11,7 @@
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/MODEL/produto.php";
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/produto.php";
 
-    $id         = $_GET['id'];
+    $id = $_POST['id'];
     $dalMovel   = new \DAL\Movel();
     $movel      = $dalMovel->SelectById($id);
     $categorias = (new \DAL\Categoria())->SelectAll();

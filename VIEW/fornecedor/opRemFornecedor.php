@@ -8,7 +8,7 @@
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/fornecedor.php";
 
     // Captura o ID enviado via GET pelo botão de excluir da listagem
-    $id = $_GET['id'];
+    $id = $_POST['id'];
 
     // Deleta o fornecedor do banco pelo ID
     $dalFornecedor = new \DAL\Fornecedor();

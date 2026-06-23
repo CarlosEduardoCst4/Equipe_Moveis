@@ -8,7 +8,7 @@
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/produto.php";
 
     // Exclusão lógica — marca ativo = 0 em vez de deletar
-    $id = $_GET['id'];
+    $id = $_POST['id'];
     $dalProduto = new \DAL\Produto();
     $dalProduto->Delete($id);
 

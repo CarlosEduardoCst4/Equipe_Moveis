@@ -1,8 +1,7 @@
 <?php
     namespace MODEL;
 
-    // Classe que representa um Fornecedor no sistema
-    // Cada atributo corresponde a uma coluna da tabela fornecedor no banco
+    
     class Fornecedor {
 
         private ?int    $id;

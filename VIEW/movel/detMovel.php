@@ -7,7 +7,7 @@
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/MODEL/movel.php";
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/movel.php";
 
-    $id     = $_GET['id'];
+    $id = $_POST['id'];
     $dalMovel = new \DAL\Movel();
     $movel    = $dalMovel->SelectById($id);
     // Busca os itens da composição do móvel

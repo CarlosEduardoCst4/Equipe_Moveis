@@ -16,7 +16,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Categorias — Equipe Móveis</title>
-    <link rel="icon" href="/equipe-moveis/images/logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="/equipe-moveis/VIEW/css/style.css">
@@ -44,21 +43,26 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($categorias as $c) { ?>
+                <?php foreach ($categorias as $c): ?>
                 <tr>
                     <td><?php echo $c->getDescricao(); ?></td>
                     <td>
-                        <a href="frmEdtCategoria.php?id=<?php echo $c->getId(); ?>" class="btn-small waves-effect waves-light">
-                            <i class="material-icons">edit</i>
-                        </a>
-                        <a href="opRemCategoria.php?id=<?php echo $c->getId(); ?>"
-                           class="btn-small red waves-effect waves-light"
-                           onclick="return confirm('Deseja excluir esta categoria?')">
-                            <i class="material-icons">delete</i>
-                        </a>
+                        <form action="frmEdtCategoria.php" method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<?php echo $c->getId(); ?>">
+                            <button type="submit" class="btn-small waves-effect waves-light">
+                                <i class="material-icons">edit</i>
+                            </button>
+                        </form>
+                        <form action="opRemCategoria.php" method="POST" style="display:inline;"
+                              onsubmit="return confirm('Deseja excluir esta categoria?')">
+                            <input type="hidden" name="id" value="<?php echo $c->getId(); ?>">
+                            <button type="submit" class="btn-small red waves-effect waves-light">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
-                <?php } ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

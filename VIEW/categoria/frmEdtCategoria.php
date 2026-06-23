@@ -8,7 +8,7 @@
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/categoria.php";
 
     // Pega o ID via GET e busca os dados atuais para pré-preencher o formulário
-    $id = $_GET['id'];
+    $id = $_POST['id'];
     $dalCategoria = new \DAL\Categoria();
     $categoria    = $dalCategoria->SelectById($id);
 ?>
