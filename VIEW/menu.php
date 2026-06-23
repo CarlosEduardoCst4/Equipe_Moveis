@@ -8,7 +8,7 @@
     <div class="nav-wrapper">
 
         <!-- Logo/nome do sistema — ao clicar vai para o dashboard -->
-        <a href="/equipe-moveis/VIEW/home.php" class="brand-logo left">
+        <a href="/equipe-moveis/VIEW/dashboard.php" class="brand-logo left">
             <i class="material-icons">weekend</i> Equipe Móveis
         </a>
 
@@ -53,7 +53,7 @@
 <!-- Menu lateral para celular (sidenav) -->
 <!-- O id "menu-mobile" é referenciado no data-target do botão hamburguer acima -->
 <ul class="sidenav" id="menu-mobile">
-    <li><a href="/equipe-moveis/VIEW/home.php">Dashboard</a></li>
+    <li><a href="/equipe-moveis/VIEW/dashboard.php">Dashboard</a></li>
     <li><a href="/equipe-moveis/VIEW/PRODUTO/lstProduto.php">Produtos</a></li>
     <li><a href="/equipe-moveis/VIEW/FORNECEDOR/lstFornecedor.php">Fornecedores</a></li>
     <li><a href="/equipe-moveis/VIEW/MOVEL/lstMovel.php">Móveis</a></li>
