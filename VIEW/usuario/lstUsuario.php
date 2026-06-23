@@ -4,18 +4,18 @@
         header("location: /equipe-moveis/VIEW/index.php");
 
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/conexao.php";
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/MODEL/categoria.php";
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/categoria.php";
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/MODEL/usuario.php";
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/usuario.php";
 
-    $dalCategoria = new \DAL\Categoria();
-    $categorias   = $dalCategoria->SelectAll();
+    $dalUsuario = new \DAL\Usuario();
+    $usuarios   = $dalUsuario->SelectAll();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Categorias — Equipe Móveis</title>
+    <title>Usuários — Equipe Móveis</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="/equipe-moveis/VIEW/css/style.css">
@@ -26,11 +26,11 @@
     <div class="container" style="margin-top: 30px;">
         <div class="row valign-wrapper">
             <div class="col s6">
-                <h5>Categorias</h5>
+                <h5>Usuários</h5>
             </div>
             <div class="col s6 right-align">
-                <a href="frmInsCategoria.php" class="btn waves-effect waves-light">
-                    <i class="material-icons left">add</i>Nova Categoria
+                <a href="frmInsUsuario.php" class="btn waves-effect waves-light">
+                    <i class="material-icons left">add</i>Novo Usuário
                 </a>
             </div>
         </div>
@@ -38,21 +38,24 @@
         <table class="striped responsive-table">
             <thead>
                 <tr>
-                    <th>Descrição</th>
+                    <th>Nome</th>
+                    <th>Login</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($categorias as $c) { ?>
+                <?php foreach ($usuarios as $u) { ?>
                 <tr>
-                    <td><?php echo $c->getDescricao(); ?></td>
+                    <td><?php echo $u->getNome(); ?></td>
+                    <td><?php echo $u->getLogin(); ?></td>
                     <td>
-                        <a href="frmEdtCategoria.php?id=<?php echo $c->getId(); ?>" class="btn-small waves-effect waves-light">
+                        <a href="frmEdtUsuario.php?id=<?php echo $u->getId(); ?>"
+                           class="btn-small waves-effect waves-light">
                             <i class="material-icons">edit</i>
                         </a>
-                        <a href="opRemCategoria.php?id=<?php echo $c->getId(); ?>"
+                        <a href="opRemUsuario.php?id=<?php echo $u->getId(); ?>"
                            class="btn-small red waves-effect waves-light"
-                           onclick="return confirm('Deseja excluir esta categoria?')">
+                           onclick="return confirm('Deseja excluir este usuário?')">
                             <i class="material-icons">delete</i>
                         </a>
                     </td>
