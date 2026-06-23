@@ -4,18 +4,18 @@
         header("location: /equipe-moveis/VIEW/index.php");
 
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/conexao.php";
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/MODEL/usuario.php";
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/usuario.php";
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/MODEL/movel.php";
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/movel.php";
 
-    $dalUsuario = new \DAL\Usuario();
-    $usuarios   = $dalUsuario->SelectAll();
+    $dalMovel = new \DAL\Movel();
+    $moveis   = $dalMovel->SelectAll();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Usuários — Equipe Móveis</title>
+    <title>Móveis — Equipe Móveis</title>
     <link rel="icon" href="/equipe-moveis/images/logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -27,11 +27,11 @@
     <div class="container" style="margin-top: 30px;">
         <div class="row valign-wrapper">
             <div class="col s6">
-                <h5>Usuários</h5>
+                <h5>Móveis</h5>
             </div>
             <div class="col s6 right-align">
-                <a href="frmInsUsuario.php" class="btn waves-effect waves-light">
-                    <i class="material-icons left">add</i>Novo Usuário
+                <a href="frmInsMovel.php" class="btn waves-effect waves-light">
+                    <i class="material-icons left">add</i>Novo Móvel
                 </a>
             </div>
         </div>
@@ -39,29 +39,33 @@
         <table class="striped responsive-table">
             <thead>
                 <tr>
-                    <th>Nome</th>
-                    <th>Login</th>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Preço Venda</th>
+                    <th>Data Cadastro</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($usuarios as $u) { ?>
+                <?php foreach ($moveis as $m) { ?>
                 <tr>
-                    <td><?php echo $u->getNome(); ?></td>
-                    <td><?php echo $u->getLogin(); ?></td>
+                    <td><?php echo $m->descricao; ?></td>
+                    <td><?php echo $m->nome_categoria; ?></td>
+                    <td>R$ <?php echo number_format($m->preco_venda, 2, ',', '.'); ?></td>
+                    <td><?php echo date('d/m/Y', strtotime($m->data_cadastro)); ?></td>
                     <td>
-                        <a href="frmEdtUsuario.php?id=<?php echo $u->getId(); ?>"
+                        <a href="frmEdtMovel.php?id=<?php echo $m->id; ?>"
                            class="btn-small waves-effect waves-light">
                             <i class="material-icons">edit</i>
                         </a>
                         <!-- Botão ver itens da composição -->
-                        <a href="detUsuario.php?id=<?php echo $u->getID(); ?>"
+                        <a href="detMovel.php?id=<?php echo $m->id; ?>"
                            class="btn-small waves-effect waves-light blue darken-2">
                             <i class="material-icons">visibility</i>
                         </a>
-                        <a href="opRemUsuario.php?id=<?php echo $u->getId(); ?>"
+                        <a href="opRemMovel.php?id=<?php echo $m->id; ?>"
                            class="btn-small red waves-effect waves-light"
-                           onclick="return confirm('Deseja excluir este usuário?')">
+                           onclick="return confirm('Deseja excluir este móvel?')">
                             <i class="material-icons">delete</i>
                         </a>
                     </td>

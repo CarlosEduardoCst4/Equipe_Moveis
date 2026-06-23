@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Ícone que aparece na aba do navegador -->
-    <link rel="icon" href="/equipe-moveis/images/fundo-login.jpg">
+    <link rel="icon" href="/equipe-moveis/images/Whats_logo.jpeg">
 
     <!-- Material Icons — biblioteca de ícones do Google usada pelo Materialize -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -32,7 +32,7 @@
                     <div class="card-content center-align">
 
                         <!-- Título do sistema -->
-                        <img src="/equipe-moveis/images/fundo-login.jpg" alt="Logo" style="max-width: 180px;">
+                        <img src="/equipe-moveis/images/Whats_logo.jpeg" alt="Logo" style="max-width: 155px;">
                         <br>
 
                         <!-- Formulário de login

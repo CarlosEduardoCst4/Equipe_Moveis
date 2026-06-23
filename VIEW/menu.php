@@ -9,7 +9,7 @@
 
         <!-- Logo/nome do sistema — ao clicar vai para o dashboard -->
         <a href="/equipe-moveis/VIEW/dashboard.php" class="brand-logo left">
-            <i class="material-icons">weekend</i> Equipe Móveis
+            <img src="/equipe-moveis/images/Whats_logo.jpeg" alt="Logo" style="margin: 15px 0 0 15px; max-width: 120px;">
         </a>
 
         <!-- Ícone do menu hamburguer — aparece só no celular -->
@@ -56,7 +56,7 @@
     <li><a href="/equipe-moveis/VIEW/dashboard.php">Dashboard</a></li>
     <li><a href="/equipe-moveis/VIEW/PRODUTO/lstProduto.php">Produtos</a></li>
     <li><a href="/equipe-moveis/VIEW/FORNECEDOR/lstFornecedor.php">Fornecedores</a></li>
-    <li><a href="/equipe-moveis/VIEW/MOVEL/lstMovel.php">Móveis</a></li>
+    <li><a href="/equipe-moveis/VIEW/MOVEL/IstMovel.php">Móveis</a></li>
     <li><a href="/equipe-moveis/VIEW/NOTA_FISCAL/lstNotaFiscal.php">Notas Fiscais</a></li>
     <li><a href="/equipe-moveis/VIEW/USUARIO/lstUsuario.php">Usuários</a></li>
     <li class="divider"></li>
