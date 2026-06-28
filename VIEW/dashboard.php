@@ -31,16 +31,12 @@
     <?php include_once "menu.php"; ?>
 
     <div class="container" style="margin-top: 24px;">
-
-        <!-- Título -->
         <div style="margin-bottom: 16px;">
             <div style="font-size: 18px; font-weight: 500; color: #E6F1FB;">Dashboard</div>
             <div style="font-size: 11px; color: #378ADD; margin-top: 2px;">
                 Visão geral do estoque · Bem-vindo, <strong><?php echo $_SESSION['login']; ?></strong>
             </div>
         </div>
-
-        <!-- Cards do topo -->
         <div class="dash-top">
             <div class="dash-top-card">
                 <div class="dtc-label">Total de produtos</div>
@@ -65,11 +61,7 @@
                 <div class="dtc-meta">parceiros ativos</div>
             </div>
         </div>
-
-        <!-- Grid meio: alertas + categorias -->
         <div class="dash-mid">
-
-            <!-- Alertas de estoque -->
             <div class="dash-panel">
                 <div class="dash-panel-header">
                     <span class="dash-panel-title">Alertas de estoque</span>
@@ -108,8 +100,6 @@
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
-
-            <!-- Últimos móveis com barras -->
             <div class="dash-panel">
                 <div class="dash-panel-header">
                     <span class="dash-panel-title">Últimos móveis cadastrados</span>
@@ -122,7 +112,7 @@
                     <p style="color:#85B7EB; font-size:12px;">Nenhum móvel cadastrado ainda.</p>
                 <?php else: ?>
                     <?php
-                        // Pega o maior preço para calcular a barra proporcional
+
                         $maxPreco = max(array_column((array)$ultimosMoveis, 'preco_venda'));
                     ?>
                     <?php foreach ($ultimosMoveis as $m):

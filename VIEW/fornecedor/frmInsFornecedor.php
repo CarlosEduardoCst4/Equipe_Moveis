@@ -20,14 +20,10 @@
 
     <div class="container" style="margin-top: 30px;">
         <h5>Novo Fornecedor</h5>
-
-        <!-- action aponta para o arquivo que vai processar o formulário -->
-        <!-- method POST — dados vão no corpo da requisição -->
         <form action="opInsFornecedor.php" method="POST">
             <div class="row">
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">business</i>
-                    <!-- required — validação HTML, campo obrigatório -->
                     <input id="nome" type="text" name="nome" required maxlength="35">
                     <label for="nome">Nome *</label>
                 </div>
@@ -58,7 +54,6 @@
                 </div>
                 <div class="input-field col s12 m4">
                     <i class="material-icons prefix">map</i>
-                    <!-- select do Materialize para escolher o estado -->
                     <select name="uf" id="uf" required>
                         <option value="" disabled selected>Selecione</option>
                         <option value="AC">AC</option><option value="AL">AL</option>
@@ -83,7 +78,6 @@
                     <button class="btn waves-effect waves-light" type="submit">
                         <i class="material-icons left">save</i>Salvar
                     </button>
-                    <!-- Botão cancelar volta para a listagem sem salvar -->
                     <a href="lstFornecedor.php" class="btn waves-effect waves-light grey darken-1" style="margin-left: 8px;">
                         <i class="material-icons left">cancel</i>Cancelar
                     </a>

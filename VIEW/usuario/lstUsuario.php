@@ -49,21 +49,18 @@
                     <td><?php echo $u->getNome(); ?></td>
                     <td><?php echo $u->getLogin(); ?></td>
                     <td>
-                        <!-- Detalhes -->
                         <form action="detUsuario.php" method="POST" style="display:inline;">
                             <input type="hidden" name="id" value="<?php echo $u->getId(); ?>">
                             <button type="submit" class="btn-small waves-effect waves-light blue darken-2">
                                 <i class="material-icons">visibility</i>
                             </button>
                         </form>
-                        <!-- Editar -->
                         <form action="frmEdtUsuario.php" method="POST" style="display:inline;">
                             <input type="hidden" name="id" value="<?php echo $u->getId(); ?>">
                             <button type="submit" class="btn-small waves-effect waves-light">
                                 <i class="material-icons">edit</i>
                             </button>
                         </form>
-                        <!-- Excluir -->
                         <form action="opRemUsuario.php" method="POST" style="display:inline;"
                               onsubmit="return confirm('Deseja excluir este usuário?')">
                             <input type="hidden" name="id" value="<?php echo $u->getId(); ?>">

@@ -7,7 +7,6 @@
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/MODEL/categoria.php";
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/categoria.php";
 
-    // Pega o ID via GET e busca os dados atuais para pré-preencher o formulário
     $id = $_POST['id'];
     $dalCategoria = new \DAL\Categoria();
     $categoria    = $dalCategoria->SelectById($id);
@@ -30,7 +29,6 @@
         <h5>Editar Categoria</h5>
 
         <form action="opEdtCategoria.php" method="POST">
-            <!-- Campo oculto com o ID para o op saber qual registro alterar -->
             <input type="hidden" name="id" value="<?php echo $categoria->getId(); ?>">
 
             <div class="row">

@@ -9,7 +9,6 @@
             $this->db = \DAL\Conexao::conectar();
         }
 
-        // Total de produtos ativos cadastrados
         public function TotalProdutos() {
             $sql = $this->db->prepare(
                 "SELECT COUNT(*) AS total FROM produto WHERE ativo = 1"
@@ -18,7 +17,6 @@
             return $sql->fetch(\PDO::FETCH_OBJ)->total;
         }
 
-        // Produtos com estoque abaixo ou igual ao mínimo
         public function ProdutosEstoqueBaixo() {
             $sql = $this->db->prepare(
                 "SELECT COUNT(*) AS total FROM produto
@@ -28,7 +26,6 @@
             return $sql->fetch(\PDO::FETCH_OBJ)->total;
         }
 
-        // Produtos com estoque zerado
         public function ProdutosZerados() {
             $sql = $this->db->prepare(
                 "SELECT COUNT(*) AS total FROM produto
@@ -38,7 +35,6 @@
             return $sql->fetch(\PDO::FETCH_OBJ)->total;
         }
 
-        // Total de móveis cadastrados
         public function TotalMoveis() {
             $sql = $this->db->prepare(
                 "SELECT COUNT(*) AS total FROM movel"
@@ -47,7 +43,6 @@
             return $sql->fetch(\PDO::FETCH_OBJ)->total;
         }
 
-        // Total de fornecedores cadastrados
         public function TotalFornecedores() {
             $sql = $this->db->prepare(
                 "SELECT COUNT(*) AS total FROM fornecedor"
@@ -56,7 +51,6 @@
             return $sql->fetch(\PDO::FETCH_OBJ)->total;
         }
 
-        // Lista os 5 produtos com estoque mais crítico
         public function ProdutosCriticos() {
             $sql = $this->db->prepare(
                 "SELECT p.descricao, p.estoque_atual, p.estoque_minimo,
@@ -71,7 +65,6 @@
             return $sql->fetchAll(\PDO::FETCH_OBJ);
         }
 
-        // Lista os 5 últimos móveis cadastrados
         public function UltimosMoveis() {
             $sql = $this->db->prepare(
                 "SELECT m.descricao, m.data_cadastro, m.preco_venda,

@@ -10,7 +10,6 @@
     $id = $_POST['id'];
     $dalMovel = new \DAL\Movel();
     $movel    = $dalMovel->SelectById($id);
-    // Busca os itens da composição do móvel
     $itens    = $dalMovel->SelectItens($id);
 ?>
 <!DOCTYPE html>

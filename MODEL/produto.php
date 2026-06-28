@@ -15,7 +15,6 @@
 
         public function __construct() {}
 
-        // ---- GETTERS ----
         public function getId()            { return $this->id; }
         public function getDescricao()     { return $this->descricao; }
         public function getIdFornecedor()  { return $this->id_fornecedor; }
@@ -26,7 +25,6 @@
         public function getEstoqueMinimo() { return $this->estoque_minimo; }
         public function getAtivo()         { return $this->ativo; }
 
-        // ---- SETTERS ----
         public function setId(int $id)                  { $this->id = $id; }
         public function setDescricao(string $descricao) { $this->descricao = $descricao; }
         public function setIdFornecedor(int $id)        { $this->id_fornecedor = $id; }

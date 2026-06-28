@@ -15,8 +15,6 @@
     $movel->setDataCadastro($_POST['data_cadastro']);
     $movel->setObservacao(trim($_POST['observacao'] ?? ''));
 
-    // Monta array só com itens que foram preenchidos
-    // Ignora linhas onde o produto ficou como "Nenhum"
     $itensNovos = [];
     foreach ($_POST['id_produto'] as $i => $id_produto) {
         if (!empty($id_produto) && !empty($_POST['quantidade'][$i]) && $_POST['quantidade'][$i] > 0) {
@@ -30,10 +28,16 @@
     $dalMovel = new \DAL\Movel();
     $dalMovel->Update($movel);
 
-    // Se tiver novos itens, adiciona sem apagar os antigos
     if (!empty($itensNovos)) {
-        $dalMovel->AdicionarItens((int)$_POST['id'], $itensNovos);
+        $resultado = $dalMovel->AdicionarItens((int)$_POST['id'], $itensNovos);
+
+        if ($resultado === 'estoque_insuficiente') {
+            $_SESSION['erro'] = "Quantidade solicitada acima do estoque disponível.";
+            header("location: frmEdtMovel.php?id=" . (int)$_POST['id']);
+            exit;
+        }
     }
 
     header("location: lstMovel.php");
+    exit;
 ?>

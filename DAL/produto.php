@@ -9,8 +9,6 @@
             $this->db = \DAL\Conexao::conectar();
         }
 
-        // Retorna todos os produtos ativos com nome do fornecedor e categoria
-        // O JOIN traz os nomes em vez dos IDs para exibir na listagem
         public function SelectAll() {
             $sql = $this->db->prepare(
                 "SELECT p.*, f.nome AS nome_fornecedor, c.descricao AS nome_categoria
@@ -24,7 +22,6 @@
             return $sql->fetchAll(\PDO::FETCH_OBJ);
         }
 
-        // Retorna um produto pelo ID — usado no formulário de edição
         public function SelectById(int $id) {
             $sql = $this->db->prepare(
                 "SELECT * FROM produto WHERE id = :id"
@@ -35,7 +32,6 @@
             return $sql->fetch();
         }
 
-        // Insere um novo produto
         public function Insert(\MODEL\Produto $produto) {
             $sql = $this->db->prepare(
                 "INSERT INTO produto
@@ -53,7 +49,6 @@
             $sql->execute();
         }
 
-        // Atualiza os dados do produto
         public function Update(\MODEL\Produto $produto) {
             $sql = $this->db->prepare(
                 "UPDATE produto SET
@@ -77,8 +72,6 @@
             $sql->execute();
         }
 
-        // Exclusão lógica — marca como inativo em vez de deletar
-        // Isso preserva o histórico do produto em notas fiscais antigas
         public function Delete(int $id) {
             $sql = $this->db->prepare(
                 "UPDATE produto SET ativo = 0 WHERE id = :id"
@@ -87,16 +80,28 @@
             $sql->execute();
         }
 
-        // Desconta quantidade do estoque — usado ao cadastrar móvel
         public function BaixaEstoque(int $id, int $quantidade) {
-            $sql = $this->db->prepare(
-                "UPDATE produto SET
-                    estoque_atual = estoque_atual - :quantidade
-                 WHERE id = :id"
-            );
-            $sql->bindValue(":id",         $id);
-            $sql->bindValue(":quantidade", $quantidade);
-            $sql->execute();
+        $sqlVerifica = $this->db->prepare(
+            "SELECT estoque_atual FROM produto WHERE id = :id"
+        );
+        $sqlVerifica->bindValue(":id", $id);
+        $sqlVerifica->execute();
+        $produto = $sqlVerifica->fetch(\PDO::FETCH_ASSOC);
+
+        if ($produto['estoque_atual'] < $quantidade) {
+            return false;
+        }
+
+        $sql = $this->db->prepare(
+            "UPDATE produto SET
+                estoque_atual = estoque_atual - :quantidade
+            WHERE id = :id"
+        );
+        $sql->bindValue(":id",         $id);
+        $sql->bindValue(":quantidade", $quantidade);
+        $sql->execute();
+
+        return true;
         }
     }
 ?>

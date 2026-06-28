@@ -3,7 +3,6 @@
     if (!isset($_SESSION['login']))
         header("location: /equipe-moveis/VIEW/index.php");
 
-    // Carrega fornecedores e categorias para preencher os selects
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/conexao.php";
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/MODEL/fornecedor.php";
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/fornecedor.php";
@@ -29,6 +28,13 @@
 
     <div class="container" style="margin-top: 30px;">
         <h5>Novo Produto</h5>
+        <?php if (!empty($_SESSION['erro'])): ?>
+    <div class="card-panel red lighten-4" style="border-left: 4px solid #c62828; color: #c62828;">
+        <i class="material-icons tiny">error</i>
+        <?= $_SESSION['erro'] ?>
+    </div>
+    <?php unset($_SESSION['erro']); ?>
+<?php endif; ?>
 
         <form action="opInsProduto.php" method="POST">
             <div class="row">
@@ -39,7 +45,6 @@
                 </div>
             </div>
             <div class="row">
-                <!-- Select de Categoria — busca do banco -->
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">category</i>
                     <select name="id_categoria" required>
@@ -52,7 +57,6 @@
                     </select>
                     <label>Categoria *</label>
                 </div>
-                <!-- Select de Fornecedor — busca do banco -->
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">local_shipping</i>
                     <select name="id_fornecedor" required>

@@ -14,8 +14,6 @@
 
         public function __construct() {}
 
-        // ---- GETTERS ----
-
         public function getId()       { return $this->id; }
         public function getNome()     { return $this->nome; }
         public function getCnpj()     { return $this->cnpj; }
@@ -23,8 +21,6 @@
         public function getEmail()    { return $this->email; }
         public function getCidade()   { return $this->cidade; }
         public function getUf()       { return $this->uf; }
-
-        // ---- SETTERS ----
 
         public function setId(int $id)          { $this->id = $id; }
         public function setNome(string $nome)   { $this->nome = $nome; }

@@ -9,7 +9,6 @@
 
     $id = $_POST['id'];
 
-    // Busca os dados atuais do fornecedor pelo ID para pré-preencher o formulário
     $dalFornecedor = new \DAL\Fornecedor();
     $fornecedor    = $dalFornecedor->SelectById($id);
 ?>
@@ -32,15 +31,11 @@
         <h5>Editar Fornecedor</h5>
 
         <form action="opEdtFornecedor.php" method="POST">
-
-            <!-- Campo oculto — passa o ID para o opEdtFornecedor saber qual registro alterar -->
-            <!-- O usuário não vê esse campo mas ele é enviado junto com o formulário -->
             <input type="hidden" name="id" value="<?php echo $fornecedor->getId(); ?>">
 
             <div class="row">
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">business</i>
-                    <!-- value pré-preenche o campo com o dado atual do banco -->
                     <input id="nome" type="text" name="nome" required maxlength="35"
                            value="<?php echo $fornecedor->getNome(); ?>">
                     <label for="nome" class="active">Nome *</label>
@@ -78,12 +73,10 @@
                     <select name="uf" id="uf" required>
                         <option value="" disabled>Selecione</option>
                         <?php
-                            // Array com todos os estados
                             $estados = ['AC','AL','AM','BA','CE','DF','ES','GO','MA',
                                         'MG','MS','MT','PA','PB','PE','PI','PR','RJ',
                                         'RN','RO','RR','RS','SC','SE','SP','TO'];
                             foreach ($estados as $estado) {
-                                // selected marca o estado atual do fornecedor no select
                                 $sel = ($estado == $fornecedor->getUf()) ? 'selected' : '';
                                 echo "<option value='$estado' $sel>$estado</option>";
                             }

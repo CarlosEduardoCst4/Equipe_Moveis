@@ -11,7 +11,12 @@
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/MODEL/categoria.php";
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/categoria.php";
 
-    $id = $_POST['id'];
+    $id = (int)($_GET['id'] ?? $_POST['id'] ?? 0);
+
+if ($id === 0) {
+    header("location: lstProduto.php");
+    exit;
+}
     $produto    = (new \DAL\Produto())->SelectById($id);
     $fornecedores = (new \DAL\Fornecedor())->SelectAll();
     $categorias   = (new \DAL\Categoria())->SelectAll();
@@ -32,6 +37,13 @@
 
     <div class="container" style="margin-top: 30px;">
         <h5>Editar Produto</h5>
+        <?php if (!empty($_SESSION['erro'])): ?>
+            <div class="card-panel red lighten-4" style="border-left: 4px solid #c62828; color: #c62828;">
+            <i class="material-icons tiny">error</i>
+            <?= $_SESSION['erro'] ?>
+    </div>
+        <?php unset($_SESSION['erro']); ?>
+        <?php endif; ?>
 
         <form action="opEdtProduto.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $produto->getId(); ?>">

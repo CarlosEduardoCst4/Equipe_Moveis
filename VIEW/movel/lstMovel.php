@@ -53,21 +53,18 @@
                     <td>R$ <?php echo number_format($m->preco_venda, 2, ',', '.'); ?></td>
                     <td><?php echo date('d/m/Y', strtotime($m->data_cadastro)); ?></td>
                     <td>
-                        <!-- Ver detalhes -->
                         <form action="detMovel.php" method="POST" style="display:inline;">
                             <input type="hidden" name="id" value="<?php echo $m->id; ?>">
                             <button type="submit" class="btn-small waves-effect waves-light blue darken-2">
                                 <i class="material-icons">visibility</i>
                             </button>
                         </form>
-                        <!-- Editar -->
                         <form action="frmEdtMovel.php" method="POST" style="display:inline;">
                             <input type="hidden" name="id" value="<?php echo $m->id; ?>">
                             <button type="submit" class="btn-small waves-effect waves-light">
                                 <i class="material-icons">edit</i>
                             </button>
                         </form>
-                        <!-- Excluir -->
                         <form action="opRemMovel.php" method="POST" style="display:inline;"
                               onsubmit="return confirm('Deseja excluir este móvel?')">
                             <input type="hidden" name="id" value="<?php echo $m->id; ?>">

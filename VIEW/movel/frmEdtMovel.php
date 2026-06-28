@@ -11,7 +11,12 @@
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/MODEL/produto.php";
     include_once $_SERVER['DOCUMENT_ROOT'] . "/equipe-moveis/DAL/produto.php";
 
-    $id = $_POST['id'];
+    $id = (int)($_GET['id'] ?? $_POST['id'] ?? 0);
+
+    if ($id === 0) {
+        header("location: lstMovel.php");
+        exit;
+    }
     $dalMovel   = new \DAL\Movel();
     $movel      = $dalMovel->SelectById($id);
     $categorias = (new \DAL\Categoria())->SelectAll();
@@ -33,6 +38,14 @@
 
     <div class="container" style="margin-top: 30px;">
         <h5>Editar Móvel</h5>
+
+        <?php if (!empty($_SESSION['erro'])): ?>
+            <div class="card-panel red lighten-4" style="border-left: 4px solid #c62828; color: #c62828;">
+            <i class="material-icons tiny">error</i>
+        <?= $_SESSION['erro'] ?>
+    </div>
+        <?php unset($_SESSION['erro']); ?>
+        <?php endif; ?>
 
         <form action="opEdtMovel.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $movel->getId(); ?>">
@@ -82,8 +95,6 @@
                     <label for="observacao" class="active">Observação</label>
                 </div>
             </div>
-
-            <!-- Composição atual — exibe os itens já salvos -->
             <h6 style="color:#85B7EB; margin-top:10px;">
                 <i class="material-icons tiny">build</i> Composição atual
             </h6>
@@ -108,7 +119,6 @@
                 <p style="color:#85B7EB;font-size:12px;margin-bottom:16px;">Nenhum item na composição.</p>
             <?php endif; ?>
 
-            <!-- Seção para adicionar novos materiais -->
             <h6 style="color:#85B7EB; margin-top:10px;">
                 <i class="material-icons tiny">add_circle</i> Adicionar novos materiais
             </h6>

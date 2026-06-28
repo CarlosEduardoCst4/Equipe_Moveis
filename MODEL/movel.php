@@ -12,7 +12,6 @@
 
         public function __construct() {}
 
-        // ---- GETTERS ----
         public function getId()           { return $this->id; }
         public function getDescricao()    { return $this->descricao; }
         public function getIdCategoria()  { return $this->id_categoria; }
@@ -20,7 +19,6 @@
         public function getDataCadastro() { return $this->data_cadastro; }
         public function getObservacao()   { return $this->observacao; }
 
-        // ---- SETTERS ----
         public function setId(int $id)                    { $this->id = $id; }
         public function setDescricao(string $descricao)   { $this->descricao = $descricao; }
         public function setIdCategoria(int $id)           { $this->id_categoria = $id; }

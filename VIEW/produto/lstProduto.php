@@ -16,6 +16,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Produtos — Equipe Móveis</title>
+    <link rel="icon" href="/equipe-moveis/images/logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="/equipe-moveis/VIEW/css/style.css">
@@ -34,6 +35,14 @@
                 </a>
             </div>
         </div>
+
+        <?php if (!empty($_SESSION['erro'])): ?>
+            <div class="card-panel red lighten-4" style="border-left: 4px solid #c62828; color: #c62828;">
+                <i class="material-icons tiny">error</i>
+                <?= $_SESSION['erro'] ?>
+            </div>
+            <?php unset($_SESSION['erro']); ?>
+        <?php endif; ?>
 
         <table class="striped responsive-table">
             <thead>
@@ -65,14 +74,12 @@
                     </td>
                     <td><?php echo $p->estoque_minimo; ?></td>
                     <td>
-                        <!-- Editar -->
-                        <form action="frmEdtProduto.php" method="POST" style="display:inline;">
+                        <form action="frmEdtProduto.php" method="GET" style="display:inline;">
                             <input type="hidden" name="id" value="<?php echo $p->id; ?>">
                             <button type="submit" class="btn-small waves-effect waves-light">
                                 <i class="material-icons">edit</i>
                             </button>
                         </form>
-                        <!-- Excluir -->
                         <form action="opRemProduto.php" method="POST" style="display:inline;"
                               onsubmit="return confirm('Deseja desativar este produto?')">
                             <input type="hidden" name="id" value="<?php echo $p->id; ?>">

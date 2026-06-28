@@ -40,7 +40,6 @@
                     </div>
                     <div class="col s12 m4">
                         <p style="color:#378ADD;font-size:11px;text-transform:uppercase;letter-spacing:.5px;">Senha</p>
-                        <!-- Exibe *** por padrão, ao clicar revela o hash MD5 -->
                         <p style="font-size:16px;">
                             <span id="senha-display">••••••••</span>
                             <button type="button" id="btn-mostrar-senha"
@@ -52,7 +51,6 @@
                                 </i>
                             </button>
                         </p>
-                        <!-- Senha hash MD5 — oculta no HTML por padrão -->
                         <span id="senha-real" style="display:none;">
                             <?php echo $usuario->getSenha(); ?>
                         </span>
@@ -77,18 +75,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="/equipe-moveis/VIEW/js/init.js"></script>
     <script>
-        // Alterna entre mostrar e ocultar a senha
         function toggleSenha() {
             var display = document.getElementById('senha-display');
             var real    = document.getElementById('senha-real').textContent.trim();
             var icone   = document.getElementById('icone-senha');
 
             if (display.textContent === '••••••••') {
-                // Revela o hash MD5
                 display.textContent = real;
                 icone.textContent   = 'visibility_off';
             } else {
-                // Oculta novamente
                 display.textContent = '••••••••';
                 icone.textContent   = 'visibility';
             }

@@ -29,6 +29,14 @@
     <div class="container" style="margin-top: 30px;">
         <h5>Novo Móvel</h5>
 
+        <?php if (!empty($_SESSION['erro'])): ?>
+            <div class="card-panel red lighten-4" style="border-left: 4px solid #c62828; color: #c62828;">
+                <i class="material-icons tiny">error</i>
+                <?= $_SESSION['erro'] ?>
+            </div>
+            <?php unset($_SESSION['erro']); ?>
+        <?php endif; ?>
+
         <form action="opInsMovel.php" method="POST">
             <div class="row">
                 <div class="input-field col s12 m8">
@@ -71,7 +79,6 @@
                 </div>
             </div>
 
-            <!-- Seção de itens da composição do móvel -->
             <h6 style="margin-top: 20px; color: #85B7EB;">
                 <i class="material-icons tiny">build</i> Composição do Móvel
             </h6>
@@ -80,7 +87,6 @@
             </p>
 
             <div id="itens-container">
-                <!-- Linha de item — será duplicada pelo JS ao clicar em + -->
                 <div class="row item-linha">
                     <div class="input-field col s12 m8">
                         <select name="id_produto[]" required>
@@ -99,7 +105,6 @@
                         <label class="active">Quantidade *</label>
                     </div>
                     <div class="col s12 m1 valign-wrapper" style="margin-top: 20px;">
-                        <!-- Botão remover linha — só aparece se tiver mais de uma linha -->
                         <button type="button" class="btn-small red btn-remover-item">
                             <i class="material-icons">remove</i>
                         </button>
@@ -107,7 +112,6 @@
                 </div>
             </div>
 
-            <!-- Botão para adicionar mais produtos à composição -->
             <button type="button" id="btn-add-item" class="btn waves-effect waves-light grey darken-1">
                 <i class="material-icons left">add</i>Adicionar Produto
             </button>
@@ -129,21 +133,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="/equipe-moveis/VIEW/js/init.js"></script>
     <script>
-        // Guarda o HTML da primeira linha de item para duplicar
         var linhaBase = document.querySelector('.item-linha').outerHTML;
-
-        // Ao clicar em + Adicionar Produto, duplica a linha
         document.getElementById('btn-add-item').addEventListener('click', function() {
             var container = document.getElementById('itens-container');
             var div = document.createElement('div');
             div.innerHTML = linhaBase;
             container.appendChild(div.firstChild);
-            // Reinicializa os selects do Materialize na nova linha
             var selects = container.querySelectorAll('select');
             M.FormSelect.init(selects);
         });
-
-        // Ao clicar no botão remover, remove a linha — mantém pelo menos 1
         document.getElementById('itens-container').addEventListener('click', function(e) {
             if (e.target.closest('.btn-remover-item')) {
                 var linhas = document.querySelectorAll('.item-linha');

@@ -9,9 +9,6 @@
 
     $nome  = trim($_POST['nome']);
     $login = trim($_POST['login']);
-
-    // Converte a senha para MD5 antes de salvar no banco
-    // Assim fica igual ao formato usado na autenticação do login.php
     $senha = md5($_POST['senha']);
 
     $usuario = new \MODEL\Usuario();

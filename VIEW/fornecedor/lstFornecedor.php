@@ -55,14 +55,12 @@
                     <td><?php echo $f->getCidade(); ?></td>
                     <td><?php echo $f->getUf(); ?></td>
                     <td>
-                        <!-- Editar via POST — ID não aparece na URL -->
                         <form action="frmEdtFornecedor.php" method="POST" style="display:inline;">
                             <input type="hidden" name="id" value="<?php echo $f->getId(); ?>">
                             <button type="submit" class="btn-small waves-effect waves-light">
                                 <i class="material-icons">edit</i>
                             </button>
                         </form>
-                        <!-- Excluir via POST com confirmação -->
                         <form action="opRemFornecedor.php" method="POST" style="display:inline;"
                               onsubmit="return confirm('Deseja excluir este fornecedor?')">
                             <input type="hidden" name="id" value="<?php echo $f->getId(); ?>">

@@ -48,8 +48,6 @@
             <div class="row">
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">lock</i>
-                    <!-- Senha não é pré-preenchida por segurança -->
-                    <!-- Se deixar em branco, o op vai manter a senha atual -->
                     <input id="senha" type="password" name="senha" maxlength="20"
                            placeholder="Deixe em branco para manter a atual">
                     <label for="senha" class="active">Nova Senha</label>
