@@ -21,11 +21,11 @@ USE `equipe_moveis`;
 -- Tabela: usuario
 -- --------------------------------------------------------
 DROP TABLE IF EXISTS `usuario`;
-CREATE TABLE `usuario` (
+CREATE TABLE `usuario` ( 
   `id`    INT(11)      NOT NULL,
   `nome`  VARCHAR(35)  NOT NULL,
-  `login` VARCHAR(30)  NOT NULL,
-  `senha` VARCHAR(32)  NOT NULL        -- MD5 sempre gera 32 chars
+  `login` VARCHAR(30)  NOT NULL, 
+  `senha` VARCHAR(32)  NOT NULL  -- MD5 sempre gera 32 chars
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
